@@ -1,2 +1,2 @@
-# projectdetection
+# projectDetection
 Community Detection in VK
