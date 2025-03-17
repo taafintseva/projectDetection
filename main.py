@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 edges = []
 closedges = []
-url = "https://api.vk.com/method/groups.getMembers?group_id=25205856&v=5.52&access_token=93585bfc051a13abe9d11c11bc5211a9a6f0b637acab3837fcc6ba0f7421b2911c1767e6a123bebeac9e4"
+url = "https://api.vk.com/method/groups.getMembers?group_id=25205856&v=5.52&access_token="
 #request for all members in our group
 
 response = requests.get(url)
@@ -18,7 +18,7 @@ newlist = random.sample(list, 500) #for 500 people, this variable can be changed
 for person in newlist:
     person = str(person)
     time.sleep(1) #we make pause because vk doesn't allow to make requests too often
-    urll = "https://api.vk.com/method/users.get?user_id="+person+"&v=5.89&access_token=93585bfc051a13abe9d11c11bc5211a9a6f0b637acab3837fcc6ba0f7421b2911c1767e6a123bebeac9e4"
+    urll = "https://api.vk.com/method/users.get?user_id="+person+"&v=5.89&access_token="
     response = requests.get(urll)
     d = response.json()
     person = int(person)
@@ -33,7 +33,7 @@ print(community) #get the final (correct) list of ids which we will use further
 
 for number in community:
     number = str(number)
-    url = "https://api.vk.com/method/friends.get?user_id="+number+"&v=5.52&access_token=93585bfc051a13abe9d11c11bc5211a9a6f0b637acab3837fcc6ba0f7421b2911c1767e6a123bebeac9e4"
+    url = "https://api.vk.com/method/friends.get?user_id="+number+"&v=5.52&access_token="
     response = requests.get(url)
     #for each person in our list we get all his/her friends
     dict1 = response.json()
@@ -46,9 +46,9 @@ for number in community:
                     person = str(person)
 
                     time.sleep(1)
-                    namenumber = requests.get("https://api.vk.com/method/users.get?user_id="+number+"&v=5.89&access_token=93585bfc051a13abe9d11c11bc5211a9a6f0b637acab3837fcc6ba0f7421b2911c1767e6a123bebeac9e4")
+                    namenumber = requests.get("https://api.vk.com/method/users.get?user_id="+number+"&v=5.89&access_token=")
                     time.sleep(1)
-                    nameperson = requests.get("https://api.vk.com/method/users.get?user_id="+person+"&v=5.89&access_token=93585bfc051a13abe9d11c11bc5211a9a6f0b637acab3837fcc6ba0f7421b2911c1767e6a123bebeac9e4")
+                    nameperson = requests.get("https://api.vk.com/method/users.get?user_id="+person+"&v=5.89&access_token=")
                     n = namenumber.json()
                     nn = n.get('response', {})[0]
                     print(nn) #leave some outputs for checking
